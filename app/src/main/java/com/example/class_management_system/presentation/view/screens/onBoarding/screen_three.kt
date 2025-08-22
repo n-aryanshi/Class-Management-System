@@ -1,7 +1,8 @@
-package com.example.class_management_system.presentation.view.onBoarding
+package com.example.class_management_system.presentation.view.screens.onBoarding
 
 
-import android.R.attr.end
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,7 +15,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -37,9 +37,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.class_management_system.R
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 @Preview(showBackground = true)
-fun SecScreen(modifier: Modifier = Modifier) {
+fun ThirdScreen(modifier: Modifier = Modifier) {
 
     //column{
     //box{
@@ -52,8 +53,6 @@ fun SecScreen(modifier: Modifier = Modifier) {
     //button
     //}
 
-
-
     Column(
         modifier = modifier
             .background(Color(0XFF06919C))
@@ -65,8 +64,8 @@ fun SecScreen(modifier: Modifier = Modifier) {
         ) {
             //image
             Image(
-                painter = painterResource(R.drawable.obs2),
-                contentDescription = "screen 2",
+                painter = painterResource(R.drawable.obs3),
+                contentDescription = "screen 3",
                 modifier = Modifier
                     .align(Alignment.TopCenter)
                     .width(413.dp)
@@ -94,11 +93,11 @@ fun SecScreen(modifier: Modifier = Modifier) {
             verticalArrangement = Arrangement.SpaceBetween // 👈 centers whole column
         ) {
             Spacer(modifier = Modifier.height(30.dp))
-            ColoredTextSec()
+            ColoredTextFin()
 
 //          Text() - Quick access to rooms and faculty details
             Text(
-                text = "Get all the Notices and Reminders at one place",
+                text = "Get Notified before your class Starts",
                 fontSize = 22.sp,
                 color = Color.White,
                 modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 12.dp),
@@ -106,8 +105,11 @@ fun SecScreen(modifier: Modifier = Modifier) {
             )
 
 
+
+
             Spacer(modifier = Modifier.height(8.dp))
 
+            // ✅ Button pinned at bottom right
             Box(
                 modifier = Modifier.fillMaxWidth(),
                 contentAlignment = Alignment.BottomEnd
@@ -119,7 +121,7 @@ fun SecScreen(modifier: Modifier = Modifier) {
                         contentColor = Color(0xFFFF3131) ),    // Text/Icon color (red)
                     modifier = Modifier
                         .align(Alignment.BottomEnd) // works inside Box
-                        .padding(end = 32.dp, bottom = 32.dp),
+                        .padding(end = 32.dp, bottom = 32.dp)
 
                 ) {
                     Text(
@@ -133,7 +135,7 @@ fun SecScreen(modifier: Modifier = Modifier) {
                                 blurRadius = 4f                         // softness of shadow
                             ),
 
-                            ),
+                        ),
 
                         )
                 }
@@ -145,28 +147,21 @@ fun SecScreen(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun ColoredTextSec() {
+fun ColoredTextFin() {
     val text = buildAnnotatedString {
         withStyle(style = SpanStyle(
             color = Color.White,
             fontSize = 36.sp,
             fontWeight = FontWeight.Bold
         )) {
-            append("Never miss any\n")
+            append("Smart Class\n")
         }
         withStyle(style = SpanStyle(
             color = Color(0XFFFF3131),
             fontSize = 36.sp,
             fontWeight = FontWeight.Bold
         )) {
-            append("Imp ")
-        }
-        withStyle(style = SpanStyle(
-            color = Color.White,
-            fontSize = 36.sp,
-            fontWeight = FontWeight.Bold
-        )) {
-            append("Info")
+            append("Reminder ")
         }
     }
 
@@ -181,7 +176,10 @@ fun ColoredTextSec() {
                 offset = Offset(6f, 6f),
                 blurRadius = 4f
             )),
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier.padding(16.dp),
+
+
+
     )
 
 }
