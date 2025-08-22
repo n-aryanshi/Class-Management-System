@@ -67,6 +67,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
 
+<<<<<<< HEAD
+=======
+//    val nav_version = "2.9.3"
+>>>>>>> 9d3c806 (Made onboarding-screens)
 
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
