@@ -1,12 +1,10 @@
-package com.example.class_management_system.presentation.view.screens
+package com.example.class_management_system.presentation.view.screens.LoginScreens
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -15,17 +13,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -41,7 +34,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -49,7 +41,7 @@ import com.example.class_management_system.R
 
 @Preview(showBackground = true)
 @Composable
-fun LightBgThird(modifier: Modifier = Modifier) {
+fun LightBgSec(modifier: Modifier = Modifier) {
 
     Column(
         modifier = modifier
@@ -82,7 +74,7 @@ fun LightBgThird(modifier: Modifier = Modifier) {
                     .padding(horizontal = 16.dp, vertical = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                LoginScreenThree() // 👈 your whole login UI now sits inside the image
+                LoginScreenTwo() // 👈 your whole login UI now sits inside the image
             }
 
 
@@ -93,7 +85,7 @@ fun LightBgThird(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun LoginScreenThree() {
+fun LoginScreenTwo() {
     Column(
         modifier = Modifier
             .padding(top = 16.dp, start = 16.dp, end = 16.dp),
@@ -103,7 +95,7 @@ fun LoginScreenThree() {
 
         // Title
         Text(
-            text = "OTP",
+            text = "Login",
             fontSize = 35.sp,
             fontWeight = FontWeight.Black,
             color = Color.White,
@@ -117,19 +109,43 @@ fun LoginScreenThree() {
             modifier = Modifier.padding(bottom = 18.dp)
         )
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(60.dp))
 
         // Username field
-        OtpInputRow(6)
+        OutlinedTextField(
+            value = "",
+            onValueChange = {},
+            placeholder = {
+                Text(
+                    text = "Phone Number",
+                    color = Color(0XFF06919C),
+                    fontWeight = FontWeight.ExtraBold,
+                    fontSize = 24.sp,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
+            },
+            modifier = Modifier
+                .width(280.dp)
+                .padding(vertical = 8.dp)
+                .shadow(8.dp, RoundedCornerShape(50)),
+            shape = RoundedCornerShape(50.dp),
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color(0xFFB5E6ED),
+                unfocusedContainerColor = Color(0xFFB5E6ED),
+                disabledContainerColor = Color(0xFFB5E6ED),
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            )
+        )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(6.dp))
 
         Box(
             modifier = Modifier.width(250.dp),
             contentAlignment = Alignment.CenterEnd
         ) {
             Text(
-                text = "3 of 3",
+                text = "2 of 3",
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
                 fontSize = 16.sp
@@ -140,7 +156,7 @@ fun LoginScreenThree() {
 
         // Progress bar
         LinearProgressIndicator(
-            progress = 1f,
+            progress = 0.66f,
             modifier = Modifier
                 .fillMaxWidth(0.7f)
                 .height(6.dp)
@@ -161,7 +177,7 @@ fun LoginScreenThree() {
                 .width(226.dp)
                 .shadow(10.dp, RoundedCornerShape(50))
         ) {
-            Text("Verify", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
+            Text("Continue", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
         }
 
         Spacer(modifier = Modifier.height(18.dp))
@@ -206,40 +222,6 @@ fun LoginScreenThree() {
 
     }
 }
-
-@Composable
-fun OtpInputRow(
-    otpLength: Int = 6
-) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        repeat(otpLength) {
-            OutlinedTextField(
-                value = "",
-                onValueChange = { },
-                singleLine = true,
-                textStyle = TextStyle(
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
-                ),
-                modifier = Modifier
-                    .width(46.dp).height(53.dp) // 👈 square box size
-                    .clip(RoundedCornerShape(20.dp)), // 👈 rounded corners
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color(0xFFD9D9D9),
-                    unfocusedContainerColor = Color(0xFFEFEFEF),
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                )
-            )
-        }
-    }
-}
-
 
 
 

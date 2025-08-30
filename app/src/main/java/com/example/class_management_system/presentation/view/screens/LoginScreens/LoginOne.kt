@@ -1,9 +1,8 @@
-package com.example.class_management_system.presentation.view.screens
+package com.example.class_management_system.presentation.view.screens.LoginScreens
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -48,19 +47,18 @@ import com.example.class_management_system.R
 
 @Preview(showBackground = true)
 @Composable
-fun LightBgSec(modifier: Modifier = Modifier) {
+fun LightBg(modifier: Modifier = Modifier) {
 
     Column(
         modifier = modifier
             .fillMaxSize()
             .background(Color(0XFF06919C))
-
     ) {
 
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .windowInsetsPadding(WindowInsets(0)),
+                .windowInsetsPadding(WindowInsets(0)), // 👈 ignore system bars, // 👈 make Box full screen
             contentAlignment = Alignment.Center // 👈 aligns children to bottom
         ) {
             Image(
@@ -73,17 +71,18 @@ fun LightBgSec(modifier: Modifier = Modifier) {
                     .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
             )
 
-            // 🔑 Place the whole login screen *inside the Box*
-            Column(
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .offset(y = (40).dp)
-                    .padding(horizontal = 16.dp, vertical = 24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                LoginScreenTwo() // 👈 your whole login UI now sits inside the image
-            }
+            LoginScreenView()
 
+            // Child sitting on top of wall
+            Image(
+                painter = painterResource(R.drawable.child),
+                contentDescription = "Child sitting",
+                modifier = Modifier
+                    .width(254.dp)
+                    .height(380.dp)
+                    //.align(Alignment.BottomCenter)
+                    .offset(x = -30.dp, y = -210.dp) // this makes child overlap bottom wall
+            )
 
 
         }
@@ -92,18 +91,19 @@ fun LightBgSec(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun LoginScreenTwo() {
+fun LoginScreenView() {
     Column(
         modifier = Modifier
-            .padding(top = 16.dp, start = 16.dp, end = 16.dp),
+            .padding(top = 136.dp, start = 16.dp, end = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+//        verticalArrangement = Arrangement.Bottom
     ) {
 
+        Spacer(modifier = Modifier.height(136.dp))
         // Title
         Text(
-            text = "Login",
-            fontSize = 35.sp,
+            text = "Welcome back!",
+            fontSize = 24.sp,
             fontWeight = FontWeight.Black,
             color = Color.White,
             style = TextStyle(
@@ -116,15 +116,13 @@ fun LoginScreenTwo() {
             modifier = Modifier.padding(bottom = 18.dp)
         )
 
-        Spacer(modifier = Modifier.height(60.dp))
-
         // Username field
         OutlinedTextField(
             value = "",
             onValueChange = {},
             placeholder = {
                 Text(
-                    text = "Phone Number",
+                    text = "Username",
                     color = Color(0XFF06919C),
                     fontWeight = FontWeight.ExtraBold,
                     fontSize = 24.sp,
@@ -145,14 +143,51 @@ fun LoginScreenTwo() {
             )
         )
 
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Password field
+        OutlinedTextField(
+            value = "",
+            onValueChange = {},
+            placeholder = {
+                Text(
+                    text = "Password",
+                    color = Color(0XFF06919C),
+                    fontWeight = FontWeight.ExtraBold,
+                    fontSize = 24.sp,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
+            },
+            trailingIcon = {
+                Icon(
+                    imageVector = Icons.Default.VisibilityOff,
+                    contentDescription = "Password visibility"
+                )
+            },
+
+            modifier = Modifier
+                .shadow(8.dp, RoundedCornerShape(50))
+                .width(280.dp)
+                .padding(vertical = 8.dp),
+            shape = RoundedCornerShape(50.dp),
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color(0xFFB5E6ED),
+                unfocusedContainerColor = Color(0xFFB5E6ED),
+                disabledContainerColor = Color(0xFFB5E6ED),
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            )
+
+        )
+
         Spacer(modifier = Modifier.height(6.dp))
 
         Box(
-            modifier = Modifier.width(250.dp),
+            modifier = Modifier.width(260.dp),
             contentAlignment = Alignment.CenterEnd
         ) {
             Text(
-                text = "2 of 3",
+                text = "1 of 3",
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
                 fontSize = 16.sp
@@ -163,7 +198,7 @@ fun LoginScreenTwo() {
 
         // Progress bar
         LinearProgressIndicator(
-            progress = 0.66f,
+            progress = 0.33f,
             modifier = Modifier
                 .fillMaxWidth(0.7f)
                 .height(6.dp)
@@ -184,15 +219,15 @@ fun LoginScreenTwo() {
                 .width(226.dp)
                 .shadow(10.dp, RoundedCornerShape(50))
         ) {
-            Text("Continue", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
+            Text("Login", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
         }
 
-        Spacer(modifier = Modifier.height(18.dp))
+        Spacer(modifier = Modifier.height(14.dp))
 
         // Sign Up
         Row {
             Text(
-                "Don't share your ",
+                "Don't have an account? ",
                 color = Color.White,
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
@@ -205,28 +240,44 @@ fun LoginScreenTwo() {
                 ),
             )
             Text(
-                "OTP",
+                "Sign Up",
                 fontSize = 17.sp,
                 color = Color.Red,
-                fontWeight = FontWeight.ExtraBold,
-            )
-
-            Text(
-                " with anyone.",
-                color = Color.White,
-                fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
-                style = TextStyle(
-                    shadow = Shadow(
-                        color = Color.Gray,
-                        offset = Offset(4f, 4f),
-                        blurRadius = 6f
-                    ),
-                ),
             )
         }
 
+        Spacer(modifier = Modifier.height(14.dp))
 
+        Text("OR", fontSize = 25.sp, color = Color.White, fontWeight = FontWeight.ExtraBold)
+
+        Spacer(modifier = Modifier.height(14.dp))
+
+        // Google login button
+        OutlinedButton(
+            onClick = { },
+            shape = RoundedCornerShape(50.dp),
+            modifier = Modifier
+                .width(266.dp)
+                .height(48.dp)
+                .shadow(8.dp, RoundedCornerShape(50)),
+            border = BorderStroke(1.dp, Color.LightGray),
+            colors = ButtonDefaults.outlinedButtonColors(containerColor = Color.White),
+            contentPadding = PaddingValues(0.dp),
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.google), // Google logo in drawable
+                contentDescription = "Google",
+                tint = Color.Unspecified,
+                modifier = Modifier.size(width = 33.dp, height = 33.dp)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                "Continue with Google",
+                color = Color.Gray,
+                fontSize = 20.sp
+            )
+        }
     }
 }
 
