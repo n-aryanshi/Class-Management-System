@@ -1,4 +1,4 @@
-package com.example.class_management_system.presentation.view.screens.onBoarding
+package com.example.class_management_system.presentation.view.screens.OnBoarding
 
 
 import android.os.Build
