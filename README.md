@@ -25,7 +25,7 @@ An Android application built with Kotlin and Jetpack Compose that helps students
 - Dark/Light mode support
 - Customizable theme and font size
 
-🛠️ Tech Stack
+🛠️ Tech Stack<br>
 **Kotlin** – primary development language
 **Jetpack Compose** – modern declarative UI
 **MVVM + Clean Architecture** – scalable project structure
