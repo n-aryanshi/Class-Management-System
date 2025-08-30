@@ -1,8 +1,11 @@
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     //kotlin("jvm") version "2.2.10"
+
 
     kotlin("plugin.serialization") version "2.2.0"
 
@@ -12,12 +15,12 @@ plugins {
 
 android {
     namespace = "com.example.class_management_system"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.class_management_system"
-        minSdk = 24
-        targetSdk = 35
+        minSdk = 26
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -70,3 +73,5 @@ dependencies {
 
     implementation (libs.androidx.material.icons.extended)
 }
+
+
