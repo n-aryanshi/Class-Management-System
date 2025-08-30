@@ -120,7 +120,7 @@ fun LoginScreenTwo() {
                     text = "Phone Number",
                     color = Color(0XFF06919C),
                     fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
+                    fontSize = 19.sp,
                     modifier = Modifier.padding(start = 16.dp)
                 )
             },
