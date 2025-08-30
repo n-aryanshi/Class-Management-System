@@ -33,3 +33,33 @@ An Android application built with Kotlin and Jetpack Compose that helps students
 **Retrofit / Firebase** – for authentication & remote data<br>
 **Hilt/Dagger** – Dependency Injection<br>
 **Coroutines + Flow** – asynchronous programming<br>
+
+## App Screenshots
+
+<table>
+<tr>
+  <td><img src="https://raw.githubusercontent.com/n-aryanshi/Class-Management-System/docs/screenshots/ob1.PNG" width="150"/></td>
+  <td><img src="https://raw.githubusercontent.com/n-aryanshi/Class-Management-System/docs/screenshots/ob2.PNG" width="150"/></td>
+  <td><img src="https://raw.githubusercontent.com/n-aryanshi/Class-Management-System/docs/screenshots/ob3.PNG" width="150"/></td>
+</tr>
+<tr>
+  <td colspan="3" align="center"><b>Onboarding Screens</b></td>
+</tr>
+<tr>
+  <td><img src="https://raw.githubusercontent.com/n-aryanshi/Class-Management-System/docs/screenshots/login1.PNG" width="150"/></td>
+  <td><img src="https://raw.githubusercontent.com/n-aryanshi/Class-Management-System/docs/screenshots/login2.PNG" width="150"/></td>
+  <td><img src="https://raw.githubusercontent.com/n-aryanshi/Class-Management-System/docs/screenshots/login3.PNG" width="150"/></td>
+</tr>
+  <tr>
+  <td colspan="3" align="center"><b>Login Screens</b></td>
+</tr>
+<tr>
+  <td><img src="https://raw.githubusercontent.com/n-aryanshi/Class-Management-System/docs/screenshots/signup1.PNG" width="150"/></td>
+  <td><img src="https://raw.githubusercontent.com/n-aryanshi/Class-Management-System/docs/screenshots/signup2.PNG" width="150"/></td>
+</tr>
+<tr>
+  <td colspan="2" align="center"><b>Signup Screens</b></td>
+</tr>
+</table>
+
+
