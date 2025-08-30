@@ -1,7 +1,7 @@
-📅 <ins>Class / College Scheduling System</ins> <br>
+📅 Class / College Scheduling System<br>
 An Android application built with Kotlin and Jetpack Compose that helps students and faculty manage schedules, classes, and events in a streamlined way. The app provides a modern UI with authentication, schedule creation, and reminders, making it easier to stay organized in academic life.
 ---
-<u>**Features**</u>
+<ins>**Features**</ins>
 
 🔐 Authentication
 - Login / Signup with Email & Password
