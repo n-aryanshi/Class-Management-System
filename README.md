@@ -26,10 +26,10 @@ An Android application built with Kotlin and Jetpack Compose that helps students
 - Customizable theme and font size
 
 🛠️ Tech Stack<br>
-**Kotlin** – primary development language
-**Jetpack Compose** – modern declarative UI
-**MVVM + Clean Architecture** – scalable project structure
-**Room Database** – local storage for schedules
-**Retrofit / Firebase** – for authentication & remote data (optional depending on your setup)
-**Hilt/Dagger** – Dependency Injection
-**Coroutines + Flow** – asynchronous programming
+**Kotlin** – primary development language<br>
+**Jetpack Compose** – modern declarative UI<br>
+**MVVM + Clean Architecture** – scalable project structure<br>
+**Room Database** – local storage for schedules<br>
+**Retrofit / Firebase** – for authentication & remote data<br>
+**Hilt/Dagger** – Dependency Injection<br>
+**Coroutines + Flow** – asynchronous programming<br>
