@@ -34,6 +34,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -41,7 +42,7 @@ import com.example.class_management_system.R
 
 @Preview(showBackground = true)
 @Composable
-fun LightBgSec(modifier: Modifier = Modifier) {
+fun LightBgSIgnUpTwo(modifier: Modifier = Modifier) {
 
     Column(
         modifier = modifier
@@ -74,7 +75,7 @@ fun LightBgSec(modifier: Modifier = Modifier) {
                     .padding(horizontal = 16.dp, vertical = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                LoginScreenTwo() // 👈 your whole login UI now sits inside the image
+                SignupScreenTwo() // 👈 your whole login UI now sits inside the image
             }
 
 
@@ -85,7 +86,7 @@ fun LightBgSec(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun LoginScreenTwo() {
+fun SignupScreenTwo() {
     Column(
         modifier = Modifier
             .padding(top = 16.dp, start = 16.dp, end = 16.dp),
@@ -95,7 +96,7 @@ fun LoginScreenTwo() {
 
         // Title
         Text(
-            text = "Login",
+            text = "OTP",
             fontSize = 35.sp,
             fontWeight = FontWeight.Black,
             color = Color.White,
@@ -109,42 +110,19 @@ fun LoginScreenTwo() {
             modifier = Modifier.padding(bottom = 18.dp)
         )
 
-        Spacer(modifier = Modifier.height(60.dp))
+        Spacer(modifier = Modifier.height(40.dp))
 
         // Username field
-        OutlinedTextField(
-            value = "",
-            onValueChange = {},
-            placeholder = {
-                Text(
-                    text = "Phone Number",
-                    color = Color(0XFF06919C),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
-                    modifier = Modifier.padding(start = 16.dp)
-                )
-            },
-            modifier = Modifier
-                .width(280.dp).height(50.dp)
-                .shadow(8.dp, RoundedCornerShape(20)),
-            shape = RoundedCornerShape(50.dp),
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color(0xFFB5E6ED),
-                unfocusedContainerColor = Color(0xFFB5E6ED),
-                disabledContainerColor = Color(0xFFB5E6ED),
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            )
-        )
+        OtpInputRow(6)
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Box(
             modifier = Modifier.width(250.dp),
             contentAlignment = Alignment.CenterEnd
         ) {
             Text(
-                text = "2 of 3",
+                text = "2 of 2",
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
                 fontSize = 16.sp
@@ -155,7 +133,7 @@ fun LoginScreenTwo() {
 
         // Progress bar
         LinearProgressIndicator(
-            progress = 0.66f,
+            progress = 1f,
             modifier = Modifier
                 .fillMaxWidth(0.7f)
                 .height(6.dp)
@@ -176,7 +154,7 @@ fun LoginScreenTwo() {
                 .width(226.dp)
                 .shadow(10.dp, RoundedCornerShape(50))
         ) {
-            Text("Continue", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
+            Text("Verify", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
         }
 
         Spacer(modifier = Modifier.height(18.dp))
@@ -221,6 +199,4 @@ fun LoginScreenTwo() {
 
     }
 }
-
-
 

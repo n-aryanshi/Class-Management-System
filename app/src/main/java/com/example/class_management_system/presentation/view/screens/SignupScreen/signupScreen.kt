@@ -3,6 +3,7 @@ package com.example.class_management_system.presentation.view.screens.LoginScree
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -47,85 +48,105 @@ import com.example.class_management_system.R
 
 @Preview(showBackground = true)
 @Composable
-fun LightBg(modifier: Modifier = Modifier) {
+fun signupBg(modifier: Modifier = Modifier) {
 
-    Column(
+    Box(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0XFF06919C))
+            .background(Color(0XFF06919C)),
+        contentAlignment = Alignment.Center
     ) {
-
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .windowInsetsPadding(WindowInsets(0)), // 👈 ignore system bars, // 👈 make Box full screen
-            contentAlignment = Alignment.Center // 👈 aligns children to bottom
-        ) {
             Image(
-                painter = painterResource(R.drawable.rectangle_5),
+                painter = painterResource(R.drawable.rect_2),
                 contentDescription = null,
-                contentScale = ContentScale.FillWidth,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .align(Alignment.BottomCenter)
-                    .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+                    .fillMaxSize()
+                    .width(345.dp).height(909.dp)
+                    .align(Alignment.TopCenter)
+                    .padding(top = 90.dp, start = 18.dp, end = 18.dp, bottom = 110.dp),
+                contentScale = ContentScale.FillBounds
             )
 
-            LoginScreenView()
-
-            // Child sitting on top of wall
-            Image(
-                painter = painterResource(R.drawable.child),
-                contentDescription = "Child sitting",
+            Box(
                 modifier = Modifier
-                    .width(254.dp)
-                    .height(380.dp)
-                    //.align(Alignment.BottomCenter)
-                    .offset(x = -30.dp, y = -210.dp) // this makes child overlap bottom wall
-            )
+                    .size(130.dp)
+                    .align(Alignment.TopCenter)
+                    .offset(y = 30.dp), // small push downward
+                contentAlignment = Alignment.Center
+            ) {
+                // Circle background
+                Image(
+                    painter = painterResource(id = R.drawable.bg_hat),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize()
+                )
+
+                // Hat image
+                Image(
+                    painter = painterResource(id = R.drawable.convo_hat),
+                    contentDescription = "Graduation Hat",
+                    modifier = Modifier.size(127.dp) // adjust size
+                )
+            }
+
+            SignupScreenView()
 
 
-        }
+
+
+
 
     }
 }
 
 @Composable
-fun LoginScreenView() {
+fun SignupScreenView() {
     Column(
         modifier = Modifier
-            .padding(top = 136.dp, start = 16.dp, end = 16.dp),
+            .padding(top = 32.dp, start = 16.dp, end = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-//        verticalArrangement = Arrangement.Bottom
+        verticalArrangement = Arrangement.Center
     ) {
 
-        Spacer(modifier = Modifier.height(136.dp))
-        // Title
-        Text(
-            text = "Welcome back!",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Black,
-            color = Color.White,
-            style = TextStyle(
-                shadow = Shadow(
-                    color = Color.Gray,
-                    offset = Offset(4f, 4f),
-                    blurRadius = 6f
-                ),
-            ),
-            modifier = Modifier.padding(bottom = 18.dp)
-        )
+        Spacer(modifier = Modifier.height(24.dp))
 
-        // Username field
         OutlinedTextField(
             value = "",
             onValueChange = {},
             placeholder = {
                 Text(
-                    text = "Username",
+                    text = "College Id",
                     color = Color(0XFF06919C),
                     fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
+                    fontSize = 19.sp,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
+            },
+            modifier = Modifier
+                .width(280.dp).height(50.dp)
+                .shadow(8.dp, RoundedCornerShape(50)),
+            shape = RoundedCornerShape(20.dp),
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color(0xFFB5E6ED),
+                unfocusedContainerColor = Color(0xFFB5E6ED),
+                disabledContainerColor = Color(0xFFB5E6ED),
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            )
+        )
+
+        Spacer(modifier = Modifier.height(18.dp))
+
+
+        OutlinedTextField(
+            value = "",
+            onValueChange = {},
+            placeholder = {
+                Text(
+                    text = "Email",
+                    color = Color(0XFF06919C),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 19.sp,
                     modifier = Modifier.padding(start = 16.dp)
                 )
             },
@@ -153,7 +174,7 @@ fun LoginScreenView() {
                     text = "Password",
                     color = Color(0XFF06919C),
                     fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
+                    fontSize = 19.sp,
                     modifier = Modifier.padding(start = 16.dp)
                 )
             },
@@ -178,6 +199,33 @@ fun LoginScreenView() {
 
         )
 
+        Spacer(modifier = Modifier.height(18.dp))
+
+        OutlinedTextField(
+            value = "",
+            onValueChange = {},
+            placeholder = {
+                Text(
+                    text = "Phone number",
+                    color = Color(0XFF06919C),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 19.sp,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
+            },
+            modifier = Modifier
+                .width(280.dp).height(50.dp)
+                .shadow(8.dp, RoundedCornerShape(50)),
+            shape = RoundedCornerShape(20.dp),
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color(0xFFB5E6ED),
+                unfocusedContainerColor = Color(0xFFB5E6ED),
+                disabledContainerColor = Color(0xFFB5E6ED),
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            )
+        )
+
         Spacer(modifier = Modifier.height(12.dp))
 
         Box(
@@ -185,7 +233,7 @@ fun LoginScreenView() {
             contentAlignment = Alignment.CenterEnd
         ) {
             Text(
-                text = "1 of 3",
+                text = "1 of 2",
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
                 fontSize = 16.sp
@@ -196,7 +244,7 @@ fun LoginScreenView() {
 
         // Progress bar
         LinearProgressIndicator(
-            progress = 0.33f,
+            progress = 0.5f,
             modifier = Modifier
                 .fillMaxWidth(0.7f)
                 .height(6.dp)
@@ -217,32 +265,7 @@ fun LoginScreenView() {
                 .width(226.dp)
                 .shadow(10.dp, RoundedCornerShape(50))
         ) {
-            Text("Login", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
-        }
-
-        Spacer(modifier = Modifier.height(14.dp))
-
-        // Sign Up
-        Row {
-            Text(
-                "Don't have an account? ",
-                color = Color.White,
-                fontSize = 17.sp,
-                fontWeight = FontWeight.Bold,
-                style = TextStyle(
-                    shadow = Shadow(
-                        color = Color.Gray,
-                        offset = Offset(4f, 4f),
-                        blurRadius = 6f
-                    ),
-                ),
-            )
-            Text(
-                "Sign Up",
-                fontSize = 17.sp,
-                color = Color.Red,
-                fontWeight = FontWeight.Bold,
-            )
+            Text("Send OTP", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
         }
 
         Spacer(modifier = Modifier.height(14.dp))
