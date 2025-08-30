@@ -3,6 +3,7 @@ package com.example.class_management_system.presentation.view.screens
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -40,6 +41,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -47,18 +49,19 @@ import com.example.class_management_system.R
 
 @Preview(showBackground = true)
 @Composable
-fun LightBg(modifier: Modifier = Modifier) {
+fun LightBgThird(modifier: Modifier = Modifier) {
 
     Column(
         modifier = modifier
             .fillMaxSize()
             .background(Color(0XFF06919C))
+
     ) {
 
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .windowInsetsPadding(WindowInsets(0)), // 👈 ignore system bars, // 👈 make Box full screen
+                .windowInsetsPadding(WindowInsets(0)),
             contentAlignment = Alignment.Center // 👈 aligns children to bottom
         ) {
             Image(
@@ -71,18 +74,17 @@ fun LightBg(modifier: Modifier = Modifier) {
                     .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
             )
 
-            LoginScreenView()
-
-            // Child sitting on top of wall
-            Image(
-                painter = painterResource(R.drawable.child),
-                contentDescription = "Child sitting",
+            // 🔑 Place the whole login screen *inside the Box*
+            Column(
                 modifier = Modifier
-                    .width(254.dp)
-                    .height(380.dp)
-                    //.align(Alignment.BottomCenter)
-                    .offset(x = -30.dp, y = -210.dp) // this makes child overlap bottom wall
-            )
+                    .align(Alignment.Center)
+                    .offset(y = (40).dp)
+                    .padding(horizontal = 16.dp, vertical = 24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                LoginScreenThree() // 👈 your whole login UI now sits inside the image
+            }
+
 
 
         }
@@ -91,19 +93,18 @@ fun LightBg(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun LoginScreenView() {
+fun LoginScreenThree() {
     Column(
         modifier = Modifier
-            .padding(top = 136.dp, start = 16.dp, end = 16.dp),
+            .padding(top = 16.dp, start = 16.dp, end = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-//        verticalArrangement = Arrangement.Bottom
+        verticalArrangement = Arrangement.Center
     ) {
 
-        Spacer(modifier = Modifier.height(136.dp))
         // Title
         Text(
-            text = "Welcome back!",
-            fontSize = 24.sp,
+            text = "OTP",
+            fontSize = 35.sp,
             fontWeight = FontWeight.Black,
             color = Color.White,
             style = TextStyle(
@@ -116,78 +117,19 @@ fun LoginScreenView() {
             modifier = Modifier.padding(bottom = 18.dp)
         )
 
+        Spacer(modifier = Modifier.height(40.dp))
+
         // Username field
-        OutlinedTextField(
-            value = "",
-            onValueChange = {},
-            placeholder = {
-                Text(
-                    text = "Username",
-                    color = Color(0XFF06919C),
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 24.sp,
-                    modifier = Modifier.padding(start = 16.dp)
-                )
-            },
-            modifier = Modifier
-                .width(280.dp)
-                .padding(vertical = 8.dp)
-                .shadow(8.dp, RoundedCornerShape(50)),
-            shape = RoundedCornerShape(50.dp),
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color(0xFFB5E6ED),
-                unfocusedContainerColor = Color(0xFFB5E6ED),
-                disabledContainerColor = Color(0xFFB5E6ED),
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            )
-        )
+        OtpInputRow(6)
 
-        Spacer(modifier = Modifier.height(10.dp))
-
-        // Password field
-        OutlinedTextField(
-            value = "",
-            onValueChange = {},
-            placeholder = {
-                Text(
-                    text = "Password",
-                    color = Color(0XFF06919C),
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 24.sp,
-                    modifier = Modifier.padding(start = 16.dp)
-                )
-            },
-            trailingIcon = {
-                Icon(
-                    imageVector = Icons.Default.VisibilityOff,
-                    contentDescription = "Password visibility"
-                )
-            },
-
-            modifier = Modifier
-                .shadow(8.dp, RoundedCornerShape(50))
-                .width(280.dp)
-                .padding(vertical = 8.dp),
-            shape = RoundedCornerShape(50.dp),
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color(0xFFB5E6ED),
-                unfocusedContainerColor = Color(0xFFB5E6ED),
-                disabledContainerColor = Color(0xFFB5E6ED),
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            )
-
-        )
-
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Box(
-            modifier = Modifier.width(260.dp),
+            modifier = Modifier.width(250.dp),
             contentAlignment = Alignment.CenterEnd
         ) {
             Text(
-                text = "1 of 3",
+                text = "3 of 3",
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
                 fontSize = 16.sp
@@ -198,7 +140,7 @@ fun LoginScreenView() {
 
         // Progress bar
         LinearProgressIndicator(
-            progress = 0.33f,
+            progress = 1f,
             modifier = Modifier
                 .fillMaxWidth(0.7f)
                 .height(6.dp)
@@ -219,15 +161,15 @@ fun LoginScreenView() {
                 .width(226.dp)
                 .shadow(10.dp, RoundedCornerShape(50))
         ) {
-            Text("Login", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
+            Text("Verify", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
         }
 
-        Spacer(modifier = Modifier.height(14.dp))
+        Spacer(modifier = Modifier.height(18.dp))
 
         // Sign Up
         Row {
             Text(
-                "Don't have an account? ",
+                "Don't share your ",
                 color = Color.White,
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
@@ -240,46 +182,64 @@ fun LoginScreenView() {
                 ),
             )
             Text(
-                "Sign Up",
+                "OTP",
                 fontSize = 17.sp,
                 color = Color.Red,
+                fontWeight = FontWeight.ExtraBold,
+            )
+
+            Text(
+                " with anyone.",
+                color = Color.White,
+                fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
+                style = TextStyle(
+                    shadow = Shadow(
+                        color = Color.Gray,
+                        offset = Offset(4f, 4f),
+                        blurRadius = 6f
+                    ),
+                ),
             )
         }
 
-        Spacer(modifier = Modifier.height(14.dp))
 
-        Text("OR", fontSize = 25.sp, color = Color.White, fontWeight = FontWeight.ExtraBold)
+    }
+}
 
-        Spacer(modifier = Modifier.height(14.dp))
-
-        // Google login button
-        OutlinedButton(
-            onClick = { },
-            shape = RoundedCornerShape(50.dp),
-            modifier = Modifier
-                .width(266.dp)
-                .height(48.dp)
-                .shadow(8.dp, RoundedCornerShape(50)),
-            border = BorderStroke(1.dp, Color.LightGray),
-            colors = ButtonDefaults.outlinedButtonColors(containerColor = Color.White),
-            contentPadding = PaddingValues(0.dp),
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.google), // Google logo in drawable
-                contentDescription = "Google",
-                tint = Color.Unspecified,
-                modifier = Modifier.size(width = 33.dp, height = 33.dp)
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                "Continue with Google",
-                color = Color.Gray,
-                fontSize = 20.sp
+@Composable
+fun OtpInputRow(
+    otpLength: Int = 6
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        repeat(otpLength) {
+            OutlinedTextField(
+                value = "",
+                onValueChange = { },
+                singleLine = true,
+                textStyle = TextStyle(
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                ),
+                modifier = Modifier
+                    .width(46.dp).height(53.dp) // 👈 square box size
+                    .clip(RoundedCornerShape(20.dp)), // 👈 rounded corners
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color(0xFFD9D9D9),
+                    unfocusedContainerColor = Color(0xFFEFEFEF),
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                )
             )
         }
     }
 }
+
 
 
 
