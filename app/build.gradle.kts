@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     //kotlin("jvm") version "2.2.10"
     kotlin("plugin.serialization") version "2.2.0"
+
 }
 
 android {
@@ -62,7 +63,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
 
-//    val nav_version = "2.9.3"
+
+
 
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
@@ -70,3 +72,4 @@ dependencies {
     implementation (libs.androidx.material.icons.extended)
 
 }
+
