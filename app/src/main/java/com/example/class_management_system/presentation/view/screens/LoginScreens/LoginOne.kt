@@ -124,16 +124,15 @@ fun LoginScreenView() {
                 Text(
                     text = "Username",
                     color = Color(0XFF06919C),
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
                     modifier = Modifier.padding(start = 16.dp)
                 )
             },
             modifier = Modifier
-                .width(280.dp)
-                .padding(vertical = 8.dp)
+                .width(280.dp).height(50.dp)
                 .shadow(8.dp, RoundedCornerShape(50)),
-            shape = RoundedCornerShape(50.dp),
+            shape = RoundedCornerShape(20.dp),
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color(0xFFB5E6ED),
                 unfocusedContainerColor = Color(0xFFB5E6ED),
@@ -143,7 +142,7 @@ fun LoginScreenView() {
             )
         )
 
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(18.dp))
 
         // Password field
         OutlinedTextField(
@@ -153,8 +152,8 @@ fun LoginScreenView() {
                 Text(
                     text = "Password",
                     color = Color(0XFF06919C),
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
                     modifier = Modifier.padding(start = 16.dp)
                 )
             },
@@ -167,9 +166,8 @@ fun LoginScreenView() {
 
             modifier = Modifier
                 .shadow(8.dp, RoundedCornerShape(50))
-                .width(280.dp)
-                .padding(vertical = 8.dp),
-            shape = RoundedCornerShape(50.dp),
+                .width(280.dp).height(50.dp),
+            shape = RoundedCornerShape(20.dp),
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color(0xFFB5E6ED),
                 unfocusedContainerColor = Color(0xFFB5E6ED),
@@ -180,7 +178,7 @@ fun LoginScreenView() {
 
         )
 
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
         Box(
             modifier = Modifier.width(260.dp),

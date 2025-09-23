@@ -119,15 +119,14 @@ fun LoginScreenTwo() {
                 Text(
                     text = "Phone Number",
                     color = Color(0XFF06919C),
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
                     modifier = Modifier.padding(start = 16.dp)
                 )
             },
             modifier = Modifier
-                .width(280.dp)
-                .padding(vertical = 8.dp)
-                .shadow(8.dp, RoundedCornerShape(50)),
+                .width(280.dp).height(50.dp)
+                .shadow(8.dp, RoundedCornerShape(20)),
             shape = RoundedCornerShape(50.dp),
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color(0xFFB5E6ED),
@@ -138,7 +137,7 @@ fun LoginScreenTwo() {
             )
         )
 
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
         Box(
             modifier = Modifier.width(250.dp),
