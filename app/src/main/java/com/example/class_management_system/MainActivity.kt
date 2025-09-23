@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.class_management_system.presentation.view.screens.OnBoarding.FirstScreen
 import com.example.class_management_system.ui.theme.ClassManagementSystemTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,10 +20,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                Text(
-                    text = "Preview Works!",
-                    modifier = Modifier.padding(innerPadding)
-                )
+                FirstScreen(modifier = Modifier.padding(innerPadding))
             }
 
         }
